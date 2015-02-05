@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Monthly Favorites</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- 
+ <div class="col-sm-4">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div>
+  </div>
+</div>
+--> 
+<div class="container">
+	<div class="row">
+	<div class="row col-xs-10 col-xs-offset-1" id="outerBox">
+
+<!-- block: Menu & header -->
+		<div class="row"  id="header">
+  		<div class="col-xs-2" id="menuButton"><span class="glyphicon glyphicon-align-justify btn-lg" aria-hidden="true"></span></div>
+  		<div class="col-xs-8" id="headerText">Monthly Favorites</div>
+  		</div>
+
+<!-- block: Months  -->
+		<div class="row">
+		<div class="box col-xs-10 col-xs-offset-1" id="monthsBar">
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-1" id="leftMonth"><span class="glyphicon glyphicon-chevron-left btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-6" id="monthsList">Jan Feb Mar Apr</div>
+			<div class="col-xs-3" id="rightMonth"><span class="glyphicon glyphicon-chevron-right btn-lg" aria-hidden="true"></span></div>
+
+		</div>
+		</div>
+		</div>		
+
+<!-- 1st block: songs -->
+		<div class="row songBlock" id="box1-return">
+		<div class="box col-xs-10 col-xs-offset-1" id="box1-old">
+		<div class="row">
+			<div class="col-xs-2" id="musicButton"><span class="glyphicon glyphicon-music btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-7" id="searchMusic">
+			<form action="" id="musicForm">
+			<label for="song"></label>
+			<input type="text" name="" id="song" placeholder="Find your favorite song of the month" value="">
+			</div>
+			<div class="col-xs-3" id="buttonMusic">
+			<input type="submit" value="SEARCH">
+			</form>
+			</div>
+
+		</div>
+		</div>
+		</div>	
+		
+	<!-- 	<div class="row testField">
+			<div class="box col-xs-10 col-xs-offset-1" id="box1">
+			<div class="row">
+			<div class="col-xs-2" id="musicButton"><span class="glyphicon glyphicon-music btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-2" id="albumImage"><img src="https://i.scdn.co/image/acdba99d57dde0284687242d7a70d43aa5d6c3e0" alt="albumimage"><span class="glyphicon glyphicon-play-circle btn-lg" aria-hidden="true"></span>
+			</div>
+			
+			<div class="col-xs-5" id="songTitle"><span id="songTitleArtist">Artist:</span><span> Killers<p><span id="songTitleSong">Song:</span><span> Human</p></span>
+			</div>
+			<div class="col-xs-3" id="changeMusicButton"><button>CHANGE</button></div>
+			
+
+		</div>
+		</div>
+
+
+		</div>  -->
+
+		<!-- <div class="row testSong">
+		</div> -->
+
+		<!-- 2nd block: movie -->
+		<div class="row movieBlock" id="box2-return">
+		<div class="box col-xs-10 col-xs-offset-1" id="box2">
+		<div class="row">
+			<div class="col-xs-2" id="movieButton"><span class="glyphicon glyphicon-film btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-7" id="searchMovie">
+			<form action="" id="movieForm">
+			<label for="movie"></label>
+			<input type="text" name="" id="movie" placeholder="Find your favorite movie of the month" value="">
+			</div>
+			<div class="col-xs-3" id="buttonMovie">
+			<input type="submit" value="SEARCH">
+			</form>
+			</div>
+
+		</div>
+		</div>
+		</div>
+		
+
+		<div class="movietrailer"><div>
+
+		<script id="trailer-box" type="text/x-handlebars-template">
+		<span>{{}}</span>
+		</script>
+
+
+
+
+		<!-- 3rd block: spot -->
+		<div class="row box" id="box3">
+
+			
+		</div>	
+
+		<!-- 4thblock: article -->
+		<div class="row box" id="box4">
+
+		</div>
+
+		<!-- 5th block: picture -->
+		<div class="row box" id="box5">
+		
+		</div>
+
+</div>  <!-- closing the outerbox -->
+</div>  <!-- closing the row of the outerbox -->
+</div>  <!-- closing the container -->
+
+
+<!-- block: OVERLAY  -->
+
+		<div class="overlay">
+		<span class="blankWarning"></span>
+		</div>
+<!-- // loop over the data.tracks.items array (from our AJAX call) and print out track info			
+	  then inner loop over the artists array and print out the name -->
+
+<script id="my-template" type="text/x-handlebars-template">
+
+		<p>Select your favorite song or try again and be more specific</p>	
+		<ul class = "results">
+
+			{{#each spotifyData}}
+			<button class="btn" num="{{id}}">
+			<span>{{#each artists}}
+				{{name}}
+			{{/each}} - 
+			{{name}} 
+			</span></button><br>
+
+			 {{/each}}	
+
+		</ul>
+		
+</script>
+
+
+<script id="new-song-box" type="text/x-handlebars-template">
+
+			<div class="box col-xs-10 col-xs-offset-1" id="box1-new">
+			<div class="row">
+			<div class="col-xs-1" id="musicButton"><span class="glyphicon glyphicon-music btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-2" id="albumImage"><img src="{{songData.album.images.2.url}}" alt="albumimage"><span class="glyphicon glyphicon-play-circle btn-lg" id="playMusic" aria-hidden="true"><audio id="audio" src="{{songData.preview_url}}"></audio></span>
+			</div>
+			
+			<div class="col-xs-6" id="songTitle"><span class="newBoxIndex">Artist:</span><span> {{songData.artists.0.name}}<p><span class="newBoxIndex">Song:</span><span> {{songData.name}}</p></span>
+			</div>
+			<div class="col-xs-3" id="changeMusicButton"><button>CHANGE</button></div>
+			
+
+		</div>
+		</div>
+
+
+</script>
+
+<script id="movieResultList" type="text/x-handlebars-template">
+
+		<p>Select your favorite movie or try again and be more specific</p>	
+		<ul class = "results">
+
+			{{#each omdbData}}
+			<button class="btn" num="{{imdbID}}">
+			<span>{{Title}} ({{Year}})</span></button><br>
+			{{/each}}	
+
+		</ul>
+		
+</script>
+
+
+<script id="new-movie-box" type="text/x-handlebars-template">
+
+			<div class="box col-xs-10 col-xs-offset-1" id="box2">
+			<div class="row">
+			<div class="col-xs-1" id="movieButton"><span class="glyphicon glyphicon-film btn-lg" aria-hidden="true"></span></div>
+			<div class="col-xs-2" id="movieImage"><img src="{{movieData.Poster}}" style="height:60px;width:47px;" alt="movieimage">
+			</div>
+			
+			<div class="col-xs-6" id="movieTitle"><span class="newBoxIndex">Movie:</span><span> {{movieData.Title}}  ({{movieData.Year}})</span>
+			</div>
+			<div class="col-xs-3" id="changeMovieButton"><button>CHANGE</button></div>
+			
+
+		</div>
+		</div>
+
+
+</script>
+
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
